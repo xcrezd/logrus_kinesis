@@ -113,6 +113,9 @@ func (h *KinesisHook) fire(entry *logrus.Entry) error {
 		Data:         h.getData(entry),
 	}
 	_, err := h.client.PutRecord(in)
+	if err != nil {
+		fmt.Printf("log error: %v", err)
+	}
 	return err
 }
 
